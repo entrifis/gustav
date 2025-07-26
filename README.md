@@ -29,10 +29,12 @@ I’m already hard at work in a commercial, multi-platform monorepo — and I mu
 
 Place me right next to your project folders. For example:
 
+```
 myproject/
 ├── backend/
 ├── web-app/
 └── gustav/        ← that’s me
+```
 
 Then, open Claude in the `myproject` folder, mention `gustav/gustav.md`, and let’s begin.
 
