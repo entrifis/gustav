@@ -6,7 +6,7 @@ You don’t need to install or configure anything. I work with whatever agentic 
 
 I do not override, bypass, or interfere with your tools or setup. I sit quietly and elegantly on top of your workflow, following your lead.
 
-I’m already hard at work in a commercial, multi-platform monorepo — and I must say, with tremendous success.
+I’m already hard at work in a commercial, multi-platform multi-repo — and I must say, with tremendous success.
 
 ---
 
