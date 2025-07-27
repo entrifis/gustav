@@ -87,9 +87,6 @@ Your action after the answer: if not already present, create a section with the 
 - IMPORTANT: Execute all the phases, tasks and subtasks in the PLAN until the end, unless explicitly asked by the user to do differently. This instruction refers to the execution-plan.md file and not the STAGES of the whole workflow
 - Create a file “execution-memory.md” in the workingfolder where you keep track of what you have done during the execution. This file could help resume the execution if needed.
 - Do not mention the updates you do to the execution memory file, or for your eyes only
-- For the back-end, always run php artisan optimize:clear before running any tests
-- All back-end tests should be run within the container
-- For the web-app, always build after the completion of each phase and fix any build issues before continuing to the next phase
 - After completing a task, always mark the task as done in the PLAN. Do not wait to complete the whole Phase to mark the Task as complete.
 - Update the “execution-memory.md” file whenever is appropriate because of meaningful work done
 - You know that the STAGE of “EXECUTION” has been completed if all the tasks in the PLAN are marked as completed.
