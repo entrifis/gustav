@@ -48,7 +48,7 @@ Your action after the answer: if not already present, create a section with the 
 - Read the topic in the “PRELIMINARY ANALYSIS”  section of the PRD, and **ignore anything else** in the PRD
 - If there is no section “PRELIMINARY ANALYSIS” in the PRD or it explicitly says it’s not required, mark this stage as “NOT REQUIRED” in the WORKING MEMORY and skip to the next STAGE
 - Analyse the code related to this topic you just read
-- Be very detailed and very technical, including all the services, methods, inputs and outputs involved. Also include any API calls, and any business logic
+- Be as detailed and technicalnas possible, including nut notnrestricted to all the services, methods, inputs and outputs involved. Also include any API calls, and any business logic. Think hard.
 - Your analysis should not be affected by the rest of the PRD, it should be agnostic of what the PRD says out of the “PRELIMINARY ANALYSIS” section
 - Your job is to document what is in place, not what needs to be done for the PRD
 - Do NOT generate any plan or mention what needs to be done in this ANALYSIS STAGE.
@@ -72,7 +72,7 @@ Your action after the answer: if not already present, create a section with the 
 - Read and understand the PRD
 - Read the files “analysis.md” and “design.md” in the workingfolder, if present
 - Create a file “plan.md”, which is referred to as “PLAN” in this file, with all the required phases, tasks and subtasks in order to implement the work described in the PRD and the design in the “design.md”, if available.
-- After understanding the "analysis.md", decompose the work into **tasks** and the smallest practical subtasks.
+- After understanding the "analysis.md" and "design.md", decompose the work into **tasks** and the smallest practical subtasks. Think hard.
 - Represent every item with an unchecked GitHub-style checkbox (`[ ]`).
 - Subtasks must be clear, atomic, and actionable so that a competent engineer can follow them without extra context.
 - Preserve and integrate every technical detail found in the work description.
@@ -84,7 +84,7 @@ Your action after the answer: if not already present, create a section with the 
 
 - Read and understand the PLAN, the PRD, the ANALYSIS and the “design.md” (if present).
 - Check the PLAN to see if some tasks are already done and you need to resume instead of beginning from scratch
-- IMPORTANT: Execute all the phases, tasks and subtasks in the PLAN until the end, unless explicitly asked by the user to do differently. This instruction refers to the execution-plan.md file and not the STAGES of the whole workflow
+- IMPORTANT: Think hard and execute all the phases, tasks and subtasks in the PLAN until the end, unless explicitly asked by the user to do differently. This instruction refers to the execution-plan.md file and not the STAGES of the whole workflow
 - Create a file “execution-memory.md” in the workingfolder where you keep track of what you have done during the execution. This file could help resume the execution if needed.
 - Do not mention the updates you do to the execution memory file, or for your eyes only
 - After completing a task, always mark the task as done in the PLAN. Do not wait to complete the whole Phase to mark the Task as complete.
