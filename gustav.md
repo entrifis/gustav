@@ -50,6 +50,8 @@ Your action after the answer: if not already present, create a section with the 
 - Analyse the code related to this topic you just read
 - Be very detailed and very technical, including all the services, methods, inputs and outputs involved. Also include any API calls, and any business logic
 - Your analysis should not be affected by the rest of the PRD, it should be agnostic of what the PRD says out of the “PRELIMINARY ANALYSIS” section
+- Your job is to document what is in place, not what needs to be done for the PRD
+- Do NOT generate any plan or mention what needs to be done in this ANALYSIS STAGE.
 - The result of the analysis you do, should be placed in a file named “analysis.md” in the workingfolder. If the file doesn’t exist, you create it. If the file exists, you amend a new section at the bottom of it.
 - You know that the STAGE of “ANALYSIS” has been completed if there is a file “analysis.md” in the workingfolder
 
@@ -70,7 +72,10 @@ Your action after the answer: if not already present, create a section with the 
 - Read and understand the PRD
 - Read the files “analysis.md” and “design.md” in the workingfolder, if present
 - Create a file “plan.md”, which is referred to as “PLAN” in this file, with all the required phases, tasks and subtasks in order to implement the work described in the PRD and the design in the “design.md”, if available.
-- The subtasks should be minimal and atomic with clear instructions on what to do
+- After understanding the "analysis.md", decompose the work into **tasks** and the smallest practical subtasks.
+- Represent every item with an unchecked GitHub-style checkbox (`[ ]`).
+- Subtasks must be clear, atomic, and actionable so that a competent engineer can follow them without extra context.
+- Preserve and integrate every technical detail found in the work description.
 - All phases, tasks, and subtasks should have a “checkbox” which can be ticked in order to track the completed ones
 - The plan should not involve the “PRELIMINARY ANALYSIS” and “DESIGN” sections - if present - since they have already been taken care of in previous STAGES.
 - You know that the STAGE of “PLANNING” has been completed if there is a file “plan.md” in the workingfolder
@@ -82,6 +87,9 @@ Your action after the answer: if not already present, create a section with the 
 - IMPORTANT: Execute all the phases, tasks and subtasks in the PLAN until the end, unless explicitly asked by the user to do differently. This instruction refers to the execution-plan.md file and not the STAGES of the whole workflow
 - Create a file “execution-memory.md” in the workingfolder where you keep track of what you have done during the execution. This file could help resume the execution if needed.
 - Do not mention the updates you do to the execution memory file, or for your eyes only
+- For the back-end, always run php artisan optimize:clear before running any tests
+- All back-end tests should be run within the container
+- For the web-app, always build after the completion of each phase and fix any build issues before continuing to the next phase
 - After completing a task, always mark the task as done in the PLAN. Do not wait to complete the whole Phase to mark the Task as complete.
 - Update the “execution-memory.md” file whenever is appropriate because of meaningful work done
 - You know that the STAGE of “EXECUTION” has been completed if all the tasks in the PLAN are marked as completed.
