@@ -24,7 +24,7 @@ I’m already hard at work in a commercial, multi-platform multi-repo — and I 
 
 ## ⚙️ How to Use Me
 
-### 🧠 If Your project consists of more than one repo
+### If Your project consists of more than one repo
 
 Git clone me right next to your project's repo(s). For example:
 
@@ -47,6 +47,10 @@ This approach makes it easy for you to pull the latest version of me whenever ne
 Just download the `gustav.md` file and put it anywhere in your project.
 
 Mention the `gustav.md` file and press enter
+
+### Resuming me
+
+I am designed so I can resume at any point, even if the context is cleared. I keep track of everything I do in my own files so I can resume at any point without context.
 
 ---
 
