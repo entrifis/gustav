@@ -2,9 +2,9 @@
 
 Greetings — I’m **Gustav**, a minimalist, no-nonsense AI agent designed to help you deliver software projects, whether you're fixing a tiny bug or building a multi-repo application from scratch.
 
-You don’t need to install or configure anything. I work with whatever agentic tool you already use — Claude, Cursor, or others. Simply place me where you want me, and I’ll get to work.
+You don’t need to install or configure anything. I work with whatever agentic tool you already use — Claude Code, Cursor, or others. Simply place me where you want me, and I’ll get to work.
 
-I do not override, bypass, or interfere with your tools or setup. I sit quietly and elegantly on top of your workflow, following your lead.
+I do not override, bypass, or interfere with your tools or setup. I sit quietly and elegantly on top of your existing setup.
 
 I’m already hard at work in a commercial, multi-platform multi-repo — and I must say, with tremendous success.
 
@@ -14,6 +14,7 @@ I’m already hard at work in a commercial, multi-platform multi-repo — and I 
 
 - I live in **one self-contained Markdown file**: `gustav.md`
 - I follow a clear, **linear workflow** made up of distinct stages
+- You can use your existing requirements, whatever its format
 - I handle **minimal or complex input** equally well
 - I create **intermediate files** inside a folder you choose — neatly organized
 - I’m comfortable with **monorepos, multi-repos, or single repos**
@@ -25,9 +26,9 @@ I’m already hard at work in a commercial, multi-platform multi-repo — and I 
 
 ### 🧠 If You’re Using Claude Code
 
-#### Option 1: Clone My Repository (recommended)
+#### Option 1: Clone Me (recommended)
 
-Place me right next to your project folders. For example:
+Git clone me right next to your project folders. For example:
 
 ```
 myproject/
@@ -36,7 +37,7 @@ myproject/
 └── gustav/        ← that’s me
 ```
 
-Then, open Claude in the `myproject` folder, mention `gustav/gustav.md`, and let’s begin.
+Then, run `claude` in the `myproject` folder, mention `gustav/gustav.md`, and let’s begin.
 
 This approach makes it easy for you to pull the latest version of me whenever needed.
 
