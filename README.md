@@ -22,7 +22,7 @@ I’m already hard at work in a commercial, multi-platform multi-repo — and I 
 
 ---
 
-## ⚙️ How to Use Me
+## ⚙️ How to Set Me Up
 
 ### If Your project consists of more than one repo
 
@@ -47,6 +47,16 @@ This approach makes it easy for you to pull the latest version of me whenever ne
 Just download the `gustav.md` file and put it anywhere in your project.
 
 Mention the `gustav.md` file and press enter
+
+## ⚙️ How to Use Me
+
+The minimum input you will need to provide me is the "Work to be done" which can be from one line of text, to a multi page requirements text. I will also ask for some other things which you can provide or just leave them blank.
+
+Here is what I will ask to be provided with:
+
+- **Topics for analysis**: Parts of the code or concepts of the domain or features you want me to understand before doing anything else. This is the equivalent of what you would do as a developer before even giving an estimate to your project manager: understand all the involved parts.
+- **Design**: If your work requires some front-end design, you will be asked to provide a design briefing. You can also add some mockup images in the working folder, and list them in the `prd.md` document after the stage of PRD is completed.
+- **Work to be done**: This is the only mandatory text to prorvide. You can provide just one line if that's what is enough, or copy/paste your whole PRD from your product manager.
 
 ### Resuming me
 
