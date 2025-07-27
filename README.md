@@ -36,15 +36,18 @@ myproject/
 ```
 
 **Claude Code**: Run `claude` in the `myproject` folder, mention `gustav/gustav.md`, and let’s begin.
+
 **Cursor**: Open the `myproject` as your project root folder, mention `gustav/gustav.md` in the chat and press enter.
+
 
 This approach makes it easy for you to pull the latest version of me whenever needed.
 
 ### If your project consists of just one repo
 
-Just download the `gustav.md` file and put it anywhere in your project
+Just download the `gustav.md` file and put it anywhere in your project.
 
 Mention the `gustav.md` file and press enter
+
 ---
 
 ## 📖 Complete User Guide
