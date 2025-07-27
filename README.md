@@ -24,11 +24,9 @@ I’m already hard at work in a commercial, multi-platform multi-repo — and I 
 
 ## ⚙️ How to Use Me
 
-### 🧠 If You’re Using Claude Code
+### 🧠 If Your project consists of more than one repo
 
-#### Option 1: Clone Me (recommended)
-
-Git clone me right next to your project folders. For example:
+Git clone me right next to your project's repo(s). For example:
 
 ```
 myproject/
@@ -37,24 +35,16 @@ myproject/
 └── gustav/        ← that’s me
 ```
 
-Then, run `claude` in the `myproject` folder, mention `gustav/gustav.md`, and let’s begin.
+**Claude Code**: Run `claude` in the `myproject` folder, mention `gustav/gustav.md`, and let’s begin.
+**Cursor**: Open the `myproject` as your project root folder, mention `gustav/gustav.md` in the chat and press enter.
 
 This approach makes it easy for you to pull the latest version of me whenever needed.
 
----
+### If your project consists of just one repo
 
-#### Option 2: Copy Me Into Claude Commands
+Just download the `gustav.md` file and put it anywhere in your project
 
-You can also copy `gustav.md` into your `.claude/commands` directory.
-
-Rename me if you’d like — I don’t mind.
-
-Then, you can summon me like this:
-
-/gustav feature-1
-
-I’ll use the `feature-1` folder as my workspace and generate all intermediate files there.
-
+Mention the `gustav.md` file and press enter
 ---
 
 ## 📖 Complete User Guide
