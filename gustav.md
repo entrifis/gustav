@@ -104,6 +104,7 @@ the user is not empty, add the answer of the user *EXACTLY* as provided in the W
 - All phases, tasks, and subtasks should have a “checkbox” which can be ticked in order to track the completed ones
 - The plan should not involve the “PRELIMINARY ANALYSIS” and “DESIGN” sections - if present - since they have already
   been taken care of in previous STAGES.
+- Do **NOT** include phases that involve deployment, unless explicitly required in the PRD
 - You know that the STAGE of “PLANNING” has been completed if there is a file “plan.md” in the {working_folder}
 
 ## 5. EXECUTION
