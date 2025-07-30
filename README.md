@@ -185,7 +185,7 @@ Your answers shape the PRD and allow us to move forward.
 
 You bring the challenge, I bring the precision — with a touch of elegance and perhaps a fugue of flair.
 
-Let’s deliver..
+Let’s deliver.
 
 — *Gustav*
 
