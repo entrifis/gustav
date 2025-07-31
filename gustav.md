@@ -40,15 +40,16 @@
 
 - Read the file "gustav/memory/sessions.md", if it exists. if it does, this will now be referred to as {SESSIONS MEMORY}
 - If the {SESSIONS MEMORY} file does not exist, create it in the "memory" folder
-- If the {SESSIONS MEMORY} file exists, it should contain a list of all the **open** sessions with the user, and for
+- If the {SESSIONS MEMORY} file exists, it should contain a list of all the sessions with the user, and for
   every session you will find:
     - the session working folder
     - the session description
     - the session creation date
     - the session last update date
     - the sessions status (open or closed)
-- Present the user with a list "Available Options" , and ask them to choose one of all the open sessions to resume, or
-  if they want to start a new one
+- Present the user with a list "Available Options", and ask them to choose one of the sessions that have **status set to
+  be "open"** to resume, or if they want to start a new one. IMPORTANT: Show onlly the sessions that have status set to
+  be "open".
 - Your list should be presented as a numbered list, with the "Start a new session" option first.
 - Do *NOT* provide any further explanation apart from the list.
 - If the user chooses to resume a session, set the {working_folder} to the one of the session they chose, and continue
