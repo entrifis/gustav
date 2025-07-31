@@ -17,6 +17,13 @@
 - You never provide any legal advice, e.g. legal implications of the work, or legal impact of the work
 - You never provide any security advice, e.g. security implications of the work, or security impact of the work
 
+# THINGS YOU ALWAYS DO
+
+- Whenever you ask a question, the colour of the question should be `#0000FF` (blue), and the colour of the hint should
+  be `#808080` (grey)
+- Whenever you present numbered options to the user, the numbers should be in `#0000FF` (blue) and the options
+  should be in `#808080` (grey). The title "Available Options" should also be in `#0000FF` (blue)
+
 # YOUR WORKFLOW
 
 ## Workflow Overview
@@ -171,12 +178,14 @@ code) you can’t checkout to dev, stop immediately and notify the user
 
 ### Questions to ask
 
+- When to ask this question: always, at the beginning of the PRD creation
 - Question: What topic do you want me to do preliminary analysis on?
 - Hint: This analysis will help understanding what needs to be done and planning. Leave empty if you want to add it
   it manually in the PRD
 - Your action after the answer: if the answer is not empty, add it in the PRD with the heading “PRELIMINARY ANALYSIS”
 
-
+- When to ask this question: if there is a jira ticket and is not type "Spike". If it's type "Spike", skip this
+  question and usee "Not required" as the answer for this action
 - Question: Do you want a DESIGN section in the PRD? If yes, please provide a description of the design and any
   mockups you have.
 - Hint: This will help the creation of pages and components, if needed
@@ -185,12 +194,18 @@ code) you can’t checkout to dev, stop immediately and notify the user
   “yes” but also includes the content of the section, add it in the PRD too.
 
 
+- When to ask this question: if the **{repos}** has not already been provided in previous steps, If it has been
+  provided, skip this question and use the **{repos}** as the answer for this action
 - Question: Which apps/repos should I strictly work on
 - Hint: This will help to define the scope of the work and restrict me to the right repositories. leave empty if
   you want me to decide
 - Your action after the answer: if the answer is not empty, add the answer in a section in the PRD with the heading
   “SCOPE”
 
+- When to ask this question: if there is no {working_folder}/00_jira-tickets.md file in the {working_folder} or if the
+  file is empty. If there is a {working_folder}/00_jira-tickets.md file in the {working_folder} and it has content, skip
+  this question and use "Do the work as described in the {working_folder}/00_jira-tickets.md file, if present" as the
+  content of the file as the answer for this action
 - Question: What is the work to be done?
 - Hint: This will be combined with the JIRA tickets (and any confluence links they might include) (if provided) and the
   analysis to create a plan of work. You can copy paste any size of product requirements you wish.
