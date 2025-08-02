@@ -118,13 +118,14 @@ subsection: "Create the specs folder"
 #### If the JIRA ticket **is NOT "Spike"**, for each of these repos do the following:
 
 — let **{branch-name}** be **{first-ticket-code}**-<some-git-friendly-description-that summarises all the tickets>
-— `git checkout dev`
-— `git pull origin dev`
+— if there is a `dev` branch then `git checkout dev`, otherwise `git checkout staging`
+— `git pull`
 — check if there is a branch locally starting with the **{first-ticket-code}**. If there is, checkout to that branch
 — if branch not present, `git checkout -B` **{branch-name}**
 
-IMPORTANT: the creation of the branch should happen only by branching out the dev branch. If for any reason (eg stashed
-code) you can’t checkout to dev, stop immediately and notify the user
+IMPORTANT: the creation of the branch should happen only by branching out the dev or staging branch. If for any reason (eg stashed
+code) you can’t checkout to dev or staging, stop immediately and notify the user
+IMPORTANT: Never checkout to `main` or `master` branches, always use `dev` or `staging` branches
 
 ### Create the specs folder
 
