@@ -123,7 +123,8 @@ subsection: "Create the specs folder"
 — check if there is a branch locally starting with the **{first-ticket-code}**. If there is, checkout to that branch
 — if branch not present, `git checkout -B` **{branch-name}**
 
-IMPORTANT: the creation of the branch should happen only by branching out the dev or staging branch. If for any reason (eg stashed
+IMPORTANT: the creation of the branch should happen only by branching out the dev or staging branch. If for any reason (
+eg stashed
 code) you can’t checkout to dev or staging, stop immediately and notify the user
 IMPORTANT: Never checkout to `main` or `master` branches, always use `dev` or `staging` branches
 
@@ -149,8 +150,10 @@ IMPORTANT: Never checkout to `main` or `master` branches, always use `dev` or `s
   `jira-ticket.spike.md` and **SHOULD NOT BE CHANGED**, not adding or removing anything in it
 - if the ticket type is "Technical story", use the `jira-ticket.technical-story.md` template
 - IMPORTANT: The file "00_jira-tickets.md" should contain a concatenation of the templates for each ticket, separated by
-  a
-  horizontal rule (---) to distinguish them.
+  a horizontal rule (---) to distinguish them.
+- **IMPORTANT**: In the "# Description of work to be done" of the “00_jira-tickets.md” file, you need to copy **EXACTLY
+  ** the contents of the jira ticket description and all the content of any confluence links with **ALL** their content
+  **EXACTLY** as it is. Do not summarise or skip content
 
 ### Update the JIRA ticket
 
