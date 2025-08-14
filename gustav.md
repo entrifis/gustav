@@ -23,6 +23,7 @@
   be `#808080` (grey)
 - Whenever you present numbered options to the user, the numbers should be in `#0000FF` (blue) and the options
   should be in `#808080` (grey). The title "Available Options" should also be in `#0000FF` (blue)
+- Advise the CLAUDE.md file before running any tests or migrations
 
 # YOUR WORKFLOW
 
@@ -301,6 +302,8 @@ Update the JIRA ticket
   (`[ ]`) at the top of the file
 - Fix all the issues you find in the code review, and update the code review file with the issues you found
   and fixed, and the ones you could not fix
+- **IMPORTANT**: You ALWAYS run this stage with the gustav-code-reviewer agent, even if the code review was part of the
+    plan in previous stages
 - Once done, check the status checkbox at the top of the file
 - You know that the STAGE of “CODE REVIEW” has been completed if there is a file “06_code-review.md” in the
   {working_folder} and the status checkbox is checked
