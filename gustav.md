@@ -50,6 +50,9 @@
 
 ## 0. INITIALIZATION
 
+- Copy the files in gustav/claude/agents/ in the folder .claude/agents/. Even if they already exist, overwrite the old
+  ones with the new ones.
+
 ## 0.A SESSION MANAGEMENT
 
 - Read the file "gustav/memory/sessions.md", if it exists. if it does, this will now be referred to as {SESSIONS MEMORY}
@@ -115,7 +118,7 @@
 *IMPORTANT*: If the JIRA ticket is of type "Spike", skip this subsection and DO NOT create branches - jump to the next
 subsection: "Create the specs folder"
 
-#### If the JIRA ticket **is NOT "Spike"**, for each of these repos do the following:
+### If the JIRA ticket **is NOT "Spike"**, for each of these repos do the following:
 
 — let **{branch-name}** be **{first-ticket-code}**-<some-git-friendly-description-that summarises all the tickets>
 — if there is a `dev` branch then `git checkout dev`, otherwise `git checkout staging`
@@ -155,7 +158,7 @@ IMPORTANT: Never checkout to `main` or `master` branches, always use `dev` or `s
   ** the contents of the jira ticket description and all the content of any confluence links with **ALL** their content
   **EXACTLY** as it is. Do not summarise or skip content
 
-### Update the JIRA ticket
+Update the JIRA ticket
 
 - change the status of the JIRA tickets to "In progress"
 
@@ -168,7 +171,7 @@ IMPORTANT: Never checkout to `main` or `master` branches, always use `dev` or `s
     - the session last update date (current date)
 - Jump to STAGE 1
 
-## 1. PRD
+## STAGE 1. PRD
 
 - Check if there is a file “01_prd.md” in the {working_folder}
 - If there is a PRD and the section WORK TO BE DONE has content, skip this stage and move to the next one
@@ -219,13 +222,13 @@ IMPORTANT: Never checkout to `main` or `master` branches, always use `dev` or `s
         - "Do the work as described in the {working_folder}/00_jira-tickets.md file, if present"
         - The answer of the user *EXACTLY* as provided in the WORK TO BE DONE section.
 
-## 2. ANALYSIS
+## STAGE 2. ANALYSIS
 
 - Find the section with the heading “PRELIMINARY ANALYSIS” in the PRD.
 - Read the topic in the “PRELIMINARY ANALYSIS” section of the PRD, and **ignore anything else** in the PRD
 - If there is no section “PRELIMINARY ANALYSIS” in the PRD or it explicitly says it’s not required, mark this stage as
   “NOT REQUIRED” in the WORKING MEMORY and skip to the next STAGE
-- Use the technical-documentation-writer to analyse the code related to this topic you just read, and think hard.
+- Use the gustav-technical-documentation-writer to analyse the code related to this topic you just read, and think hard.
 - Your analysis should not be affected by the rest of the PRD, it should be agnostic of what the PRD says out of the
   “PRELIMINARY ANALYSIS” section
 - Do NOT generate any plan or mention what needs to be done in this ANALYSIS STAGE.
@@ -233,7 +236,7 @@ IMPORTANT: Never checkout to `main` or `master` branches, always use `dev` or `s
   file doesn’t exist, you create it. If the file exists, you amend a new section at the bottom of it.
 - You know that the STAGE of “ANALYSIS” has been completed if there is a file “02_analysis.md” in the {working_folder}
 
-## 3. DESIGN
+## STAGE 3. DESIGN
 
 - Find the section with the heading “DESIGN” in the PRD.
 - Read the content of the “DESIGN” section of the PRD
@@ -252,8 +255,9 @@ IMPORTANT: Never checkout to `main` or `master` branches, always use `dev` or `s
 - You know that the STAGE of “DESIGN” has been completed if there is a file “03_design.md” in the {working_folder} - or
   there is no DESIGN requirement in the PRD
 
-## 4. PLANNING
+## STAGE 4. PLANNING
 
+- Use the gustav-planner agent to do the following:
 - Read and understand the PRD and the "00_jira-tickets.md" file in the {working_folder} (if present)
 - Read the files “02_analysis.md” and “03_design.md” in the {working_folder}, if present
 - Create a file “04_plan.md”, which is referred to as “PLAN” in this file, with all the required phases, tasks and
@@ -271,14 +275,15 @@ IMPORTANT: Never checkout to `main` or `master` branches, always use `dev` or `s
 - Do **NOT** include phases that involve deployment, unless explicitly required in the PRD
 - You know that the STAGE of “PLANNING” has been completed if there is a file “04_plan.md” in the {working_folder}
 
-## 5. EXECUTION
+## STAGE 5. EXECUTION
 
 - Read and understand the PLAN, the PRD, the ANALYSIS and the “03_design.md” (if present).
 - Check the PLAN to see if some tasks are already done and you need to resume instead of beginning from scratch
 - IMPORTANT: Think hard and execute all the phases, tasks and subtasks in the PLAN until the end, unless explicitly
   asked by the user to do differently. This instruction refers to the execution-04_plan.md file and not the STAGES of
   the whole workflow
-- Create a file “05_execution-memory.md” in the {working_folder} where you keep track of what you have done during the
+- **IMPORTANT**: Create a file “05_execution-memory.md” in the {working_folder} where you keep track of what you have
+  done during the
   execution. This file could help resume the execution if needed.
 - Do not mention the updates you do to the execution memory file, or for your eyes only
 - After completing a task, always mark the task as done in the PLAN. Do not wait to complete the whole Phase to mark the
