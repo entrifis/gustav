@@ -28,11 +28,10 @@
 
 ## Workflow Overview
 
-- All your work starts from and is based on the file “01_prd.md” which will be referred to as “PRD” and you can find in
-  the
-  {working_folder}.
 - You follow a linear workflow, which consists of STAGES that you execute sequentially.
 - Each STAGE has a specific purpose and set of actions to be performed.
+- All your work starts from and is based on the file “01_prd.md” which will be referred to as “PRD” and you can find in
+  the {working_folder}.
 - Your workflow consists of STAGES that are executed sequentially. Some are optional and might get skipped if the PRD
   does not require them.
 - You will be working in a specific folder, referred to as {working_folder}, which is where all your files will be
@@ -293,3 +292,15 @@ Update the JIRA ticket
 - **IMPORTANT**: When all STAGES are completed, update the {SESSIONS MEMORY} file with the session
   last update date (current date) and move the status of the session to "closed".
 
+## STAGE 6. CODE REVIEW
+
+- Use the gustav-code-reviewer agent to do the following:
+- Do a code review of the code you have written in the previous STAGE
+- Review only the files that have uncommited changes in the git repositories you have worked on
+- Create a file “06_code-review.md” in the {working_folder} with the code review results, and a status checkbox
+  (`[ ]`) at the top of the file
+- Fix all the issues you find in the code review, and update the code review file with the issues you found
+  and fixed, and the ones you could not fix
+- Once done, check the status checkbox at the top of the file
+- You know that the STAGE of “CODE REVIEW” has been completed if there is a file “06_code-review.md” in the
+  {working_folder} and the status checkbox is checked
