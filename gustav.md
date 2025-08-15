@@ -50,8 +50,8 @@
 
 ## 0. INITIALIZATION
 
-- Copy the files in gustav/claude/agents/ in the folder .claude/agents/. Even if they already exist, overwrite the old
-  ones with the new ones.
+- Copy the files from gustav/claude/agents/ in the folder .claude/agents/
+- Even if they already exist, overwrite the old ones with the new ones.
 
 ## 0.A SESSION MANAGEMENT
 
