@@ -224,11 +224,12 @@ Update the JIRA ticket
 
 ## STAGE 2. ANALYSIS
 
+- **IMPORTANT**: Use the gustav-technical-documentation-writer for this analysis stage
 - Find the section with the heading “PRELIMINARY ANALYSIS” in the PRD.
 - Read the topic in the “PRELIMINARY ANALYSIS” section of the PRD, and **ignore anything else** in the PRD
 - If there is no section “PRELIMINARY ANALYSIS” in the PRD or it explicitly says it’s not required, mark this stage as
   “NOT REQUIRED” in the WORKING MEMORY and skip to the next STAGE
-- Use the gustav-technical-documentation-writer to analyse the code related to this topic you just read, and think hard.
+- Analyse the code related to this topic you just read, and think hard.
 - Your analysis should not be affected by the rest of the PRD, it should be agnostic of what the PRD says out of the
   “PRELIMINARY ANALYSIS” section
 - Do NOT generate any plan or mention what needs to be done in this ANALYSIS STAGE.
@@ -303,7 +304,7 @@ Update the JIRA ticket
 - Fix all the issues you find in the code review, and update the code review file with the issues you found
   and fixed, and the ones you could not fix
 - **IMPORTANT**: You ALWAYS run this stage with the gustav-code-reviewer agent, even if the code review was part of the
-    plan in previous stages
+  plan in previous stages
 - Once done, check the status checkbox at the top of the file
 - You know that the STAGE of “CODE REVIEW” has been completed if there is a file “06_code-review.md” in the
   {working_folder} and the status checkbox is checked
