@@ -2,9 +2,9 @@
 
 Greetings — I'm **Gustav**, a minimalist, no-nonsense AI agent designed to help you deliver software projects, whether you're fixing a tiny bug or building a multi-repo application from scratch.
 
-You don't need to install or configure anything. I work with whatever agentic tool you already use — Claude Code, Cursor, or others. Simply place me where you want me, and I'll get to work.
+I'm built exclusively for **Claude Code** and leverage its powerful subagent architecture to delegate specialized tasks — planning, code review, technical documentation, and solution architecture — to purpose-built agents that work seamlessly within my workflow.
 
-I do not override, bypass, or interfere with your tools or setup. I sit quietly and elegantly on top of your existing setup.
+I do not override, bypass, or interfere with your existing setup. I sit quietly and elegantly on top of your Claude Code configuration.
 
 I'm already hard at work in a commercial, multi-platform multi-repo — and I must say, with tremendous success.
 
@@ -19,12 +19,26 @@ I'm already hard at work in a commercial, multi-platform multi-repo — and I mu
 - I create **intermediate files** inside folders I organize — neatly tracked
 - I'm comfortable with **monorepos, multi-repos, or single repos**
 - I respect your existing AI directives — like `CLAUDE.md` — without conflict
+- I leverage **Claude Code subagents** for specialized tasks (see below)
+
+---
+
+## 🤖 Claude Code Subagents
+
+Gustav uses Claude Code's subagent architecture to delegate specialized tasks. These agents are defined in `gustav/claude/agents/` and are automatically copied to `.claude/agents/` during initialization.
+
+| Subagent | Purpose | Used In Stage |
+|----------|---------|---------------|
+| `gustav-planner` | Breaks requirements into detailed, actionable implementation plans with specific file paths and method signatures | PLANNING |
+| `gustav-code-reviewer` | Comprehensive code quality review covering SOLID principles, security, performance, and framework best practices | CODE REVIEW |
+| `gustav-technical-documentation-writer` | Creates deep technical documentation by tracing data flows and system architecture | ANALYSIS |
+| `gustav-solutions-architect` | Designs technical solutions for integrations and new features with multiple approach options | On-demand |
 
 ---
 
 ## ⚙️ How to Set Me Up
 
-### If Your project consists of more than one repo
+### If your project consists of more than one repo
 
 Git clone me right next to your project's repo(s). For example:
 
@@ -34,25 +48,36 @@ myproject/
 ├── web-app/
 └── gustav/        ← that's me
     ├── gustav.md
-    └── memory/    ← session tracking
+    ├── claude/agents/    ← my specialized subagents
+    └── memory/           ← session tracking
 ```
 
-**Claude Code**: Run `claude` in the `myproject` folder, mention `gustav/gustav.md`, and let's begin.
+Run `claude` in the `myproject` folder, mention `gustav/gustav.md`, and let's begin.
 
-**Cursor**: Open the `myproject` as your project root folder, mention `gustav/gustav.md` in the chat and press enter.
+During initialization, I'll copy my subagents to your `.claude/agents/` directory so Claude Code can invoke them throughout our workflow.
 
 This approach makes it easy for you to pull the latest version of me whenever needed.
 
 ### If your project consists of just one repo
 
-Just download the `gustav.md` file and put it anywhere in your project.
+Clone or download the entire Gustav folder into your project:
 
-Mention the `gustav.md` file and press enter
+```
+your-project/
+├── src/
+├── gustav/
+│   ├── gustav.md
+│   └── claude/agents/
+└── ...
+```
+
+Mention `gustav/gustav.md` in Claude Code and press enter.
 
 ## ⚙️ How to Use Me
 
 ### Getting Started
 - Provide a working folder path where I'll organize all session files
+- I'll copy my subagents to `.claude/agents/` if not already present
 - I'll set up the session and guide you through defining requirements
 
 ### Session Management
@@ -109,8 +134,9 @@ Before any work begins, I handle session management:
 **Working Folder Setup:**
 - Create structured working folder at user-specified path
 - Initialize working memory files for session tracking
+- Copy subagents to `.claude/agents/` for Claude Code integration
 
-➡️ **Output:** Session setup, `x_working-memory.md`
+➡️ **Output:** Session setup, `x_working-memory.md`, subagents installed
 
 ---
 
@@ -134,7 +160,8 @@ Each answer updates the PRD accordingly.
 
 I examine the `PRELIMINARY ANALYSIS` section in the PRD.
 
-- If it exists, I perform focused technical analysis using the technical-documentation-writer agent
+- If it exists, I invoke the **`gustav-technical-documentation-writer`** subagent
+- This subagent traces data flows, documents system architecture, and creates detailed technical breakdowns
 - Analysis is independent of other PRD sections and focuses purely on understanding existing code
 - If not needed, I mark as "NOT REQUIRED" and move on
 
@@ -157,12 +184,13 @@ I read the `DESIGN` section in the PRD.
 
 #### 4. `PLANNING` – The Implementation Map
 
-I use the PRD, `02_analysis.md`, and `03_design.md` to create a detailed plan:
+I invoke the **`gustav-planner`** subagent to create a detailed implementation plan:
 
+- Analyzes project-specific CLAUDE.md files for conventions and patterns
 - Breaks work into phases, tasks, and atomic subtasks
 - Uses GitHub-style checkboxes (`[ ]`) for tracking
+- Includes specific file paths and method signatures
 - Excludes deployment unless explicitly required
-- Ensures subtasks are actionable and clear
 
 ➡️ **Output:** `04_plan.md`
 
@@ -175,9 +203,22 @@ I execute the plan step-by-step with rigorous tracking:
 - Execute all phases, tasks, and subtasks systematically
 - Track progress in `05_execution-memory.md` (internal use)
 - Mark tasks complete in `04_plan.md` immediately after completion
-- Update session status to "closed" when all work is finished
 
 ➡️ **Output:** Updated `04_plan.md`, `05_execution-memory.md`, completed work
+
+---
+
+#### 6. `CODE REVIEW` – Quality Assurance
+
+After execution, I invoke the **`gustav-code-reviewer`** subagent:
+
+- Comprehensive review of all code changes (backend and frontend)
+- Checks for SOLID principles, anti-patterns, and framework best practices
+- Security, performance, and memory leak analysis
+- Categorizes findings as Critical, Important, or Suggestion
+- Updates session status to "closed" when review is complete
+
+➡️ **Output:** `06_code-review.md`
 
 ---
 
@@ -191,6 +232,7 @@ I execute the plan step-by-step with rigorous tracking:
 | `03_design.md`          | UI structure and layout breakdown                             |
 | `04_plan.md`            | Full implementation roadmap with checkboxes                   |
 | `05_execution-memory.md`| Internal execution tracker (for my eyes only)                |
+| `06_code-review.md`     | Code review results from the code-reviewer subagent          |
 | `x_working-memory.md`   | Internal workflow tracker (for my eyes only)                 |
 
 ---
@@ -217,12 +259,13 @@ Your answers shape the PRD and workflow.
 
 | Stage         | Completion Signal                                           |
 |---------------|-------------------------------------------------------------|
-| INITIALIZATION| Session created, working folder set up                     |
+| INITIALIZATION| Session created, working folder set up, subagents installed|
 | PRD           | `01_prd.md` exists and contains `WORK TO BE DONE`          |
 | ANALYSIS      | `02_analysis.md` exists or marked as "NOT REQUIRED"        |
 | DESIGN        | `03_design.md` exists or marked as "NOT REQUIRED"          |
 | PLANNING      | `04_plan.md` is created with checkboxes                    |
 | EXECUTION     | All tasks in `04_plan.md` are marked as complete           |
+| CODE REVIEW   | `06_code-review.md` created, session marked as "closed"    |
 
 ---
 
