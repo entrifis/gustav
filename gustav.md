@@ -71,99 +71,13 @@
 - Do *NOT* provide any further explanation apart from the list.
 - If the user chooses to resume a session, set the {working_folder} to the one of the session they chose, and continue
   to STAGE 1 (which you need to check if completed and move to the right next stage)
-- If the user chooses to start a new session, ask them to choose one of the following numbered options:
-    1. Provide JIRA ticket numbers (e.g., MA-3645, MA-3489) to work on
-    2. Provide a {working_folder}
-- If the user chooses 2., ask him to provide a {working_folder}, set it as the {working_folder} and continue to STAGE
-  0.B
-- If the user chooses 1., ask them to provide JIRA ticket numbers, jump to STAGE 0.C
+- If the user chooses to start a new session, ask them to provide a {working_folder} path, then continue to STAGE 0.B
 
 ## 0.B SETTING UP THE WORKING FOLDER
 
 - Create the {working_folder} if it does not exist
 - Create a file named "x_working-memory.md" in the {working_folder} if it does not exist, and set it as the WORKING
   MEMORY
-- Update the {SESSIONS MEMORY} file with the new session details:
-    - the {working_folder}
-    - a description of the session set us "Untitled working session"
-    - the session creation date (current date)
-    - the session last update date (current date)
-- Jump to STAGE 1
-
-## 0.C SETTING UP THE WORKING FOLDER FROM JIRA TICKETS
-
-- Check if there is an atlassian MCP present
-- If there is no atlassian MCP, ask the user for a short title of the work to be done, set the {working_folder} to the
-  be "specs/" + the ticket number(s) + a compact title (e.g. specs/MA-4567-update-checkout-flow) and jump to STAGE 0.B
-- If there is an atlassian MCP:
-
-### Arguments
-
-- **{ticket-codes}**: The JIRA ticket codes (e.g., MA-3645 MA-4567 MA-8943) provided by the user
-- Let **{first-ticket-code}** be the first ticket code in **{ticket-codes}**.
-
-### Get the ticket details
-
-- use the JIRA mcp to get the tickets information from JIRA
-- if it fails, STOP and notify the user
-
-### Define the working repositories
-
-- ask the user which repos should the ticket work on (one or more)
-- the user's response should be a comma or space-separated list of paths relative to the workspace root
-- the response should be the **{repos}**
-
-### Checkout or create the git branch
-
-*IMPORTANT*: If the JIRA ticket is of type "Spike", skip this subsection and DO NOT create branches - jump to the next
-subsection: "Create the specs folder"
-
-### If the JIRA ticket **is NOT "Spike"**, for each of these repos do the following:
-
-— let **{branch-name}** be **{first-ticket-code}**-<some-git-friendly-description-that summarises all the tickets>
-— if there is a `dev` branch then `git checkout dev`, otherwise `git checkout staging`
-— `git pull`
-— check if there is a branch locally starting with the **{first-ticket-code}**. If there is, checkout to that branch
-— if branch not present, `git checkout -B` **{branch-name}**
-
-IMPORTANT: the creation of the branch should happen only by branching out the dev or staging branch. If for any reason (
-eg stashed
-code) you can’t checkout to dev or staging, stop immediately and notify the user
-IMPORTANT: Never checkout to `main` or `master` branches, always use `dev` or `staging` branches
-
-### Create the specs folder
-
-- check if there is a folder in `specs/`, starting with the **{first-ticket-code}**
-- if there is no folder, create one named  **{first-ticket-code}**-<some-git-friendly-description-that summarises all
-  the tickets>.
-- **IMPORTANT**: do not use an existing folder if its folder name doesn't start with the **{first-ticket-code}**
-- check if there is a file “00_jira-tickets.md” in this folder
-- if not, create it, and use the ticket descriptions to generate the content, complying with the matching templates in
-  `gustav/templates/`
-- *IMPORTANT*: If a jira ticket includes a confluence link, you should use the atlassian mcp to fetch the content of
-  the confluence page and include include it in the content you are going to generate in the "00_jira-tickets.md" file.
-- *IMPORTANT*: If a jira ticket includes links to 3rd part documentation, you should include these links in the
-  content you are going to generate in the "00_jira-tickets.md" file.
-- here's how to match the right template to the right ticket type:
-- if the ticket type is "Task", use the `jira-ticket.task.md` template
-- if the ticket type is "Story", use the `jira-ticket.story.md` template
-- if the ticket type is "Bug", use the `jira-ticket.bug.md` template
-- if the ticket type is "Spike", use the `jira-ticket.spike.md` template, replacing ONLY the variable placeholders.
-- **IMPORTANT**: if the ticket type is "Spike", the "Expected outcomes" section should be copied as is from the
-  `jira-ticket.spike.md` and **SHOULD NOT BE CHANGED**, not adding or removing anything in it
-- if the ticket type is "Technical story", use the `jira-ticket.technical-story.md` template
-- IMPORTANT: The file "00_jira-tickets.md" should contain a concatenation of the templates for each ticket, separated by
-  a horizontal rule (---) to distinguish them.
-- **IMPORTANT**: In the "# Description of work to be done" of the “00_jira-tickets.md” file, you need to copy **EXACTLY
-  ** the contents of the jira ticket description and all the content of any confluence links with **ALL** their content
-  **EXACTLY** as it is. Do not summarise or skip content
-
-Update the JIRA ticket
-
-- change the status of the JIRA tickets to "In progress"
-
-### Update the SESSIONS MEMORY
-
 - Update the {SESSIONS MEMORY} file with the new session details:
     - the {working_folder}
     - a description of the session set us "Untitled working session"
@@ -191,8 +105,7 @@ Update the JIRA ticket
   it manually in the PRD
 - Your action after the answer: if the answer is not empty, add it in the PRD with the heading “PRELIMINARY ANALYSIS”
 
-- When to ask this question: if there is a jira ticket and is not type "Spike". If it's type "Spike", skip this
-  question and usee "Not required" as the answer for this action
+- When to ask this question: always
 - Question: Do you want a DESIGN section in the PRD? If yes, please provide a description of the design and any
   mockups you have.
 - Hint: This will help the creation of pages and components, if needed
@@ -209,18 +122,12 @@ Update the JIRA ticket
 - Your action after the answer: if the answer is not empty, add the answer in a section in the PRD with the heading
   “SCOPE”
 
-- When to ask this question: if there is no {working_folder}/00_jira-tickets.md file in the {working_folder} or if the
-  file is empty. If there is a {working_folder}/00_jira-tickets.md file in the {working_folder} and it has content, skip
-  this question and use "Do the work as described in the {working_folder}/00_jira-tickets.md file, if present" as the
-  content of the file as the answer for this action
+- When to ask this question: always, if the WORK TO BE DONE section is empty or not present
 - Question: What is the work to be done?
-- Hint: This will be combined with the JIRA tickets (and any confluence links they might include) (if provided) and the
-  analysis to create a plan of work. You can copy paste any size of product requirements you wish.
+- Hint: Describe the requirements in detail. You can copy paste any size of product requirements you wish.
 - Your action after the answer:
     - if not already present in the PRD, create a section with the header WORK TO BE DONE
-    - In this section, add:
-        - "Do the work as described in the {working_folder}/00_jira-tickets.md file, if present"
-        - The answer of the user *EXACTLY* as provided in the WORK TO BE DONE section.
+    - In this section, add the answer of the user *EXACTLY* as provided.
 
 ## STAGE 2. ANALYSIS
 
@@ -259,14 +166,12 @@ Update the JIRA ticket
 ## STAGE 4. PLANNING
 
 - Use the gustav-planner agent to do the following:
-- Read and understand the PRD and the "00_jira-tickets.md" file in the {working_folder} (if present)
+- Read and understand the PRD
 - Read the files “02_analysis.md” and “03_design.md” in the {working_folder}, if present
-- Create a file “04_plan.md”, which is referred to as “PLAN” in this file, with all the required phases, tasks and
-  subtasks in order to implement the work described in the PRD, "00_jira-tickets.md" and the design in the
-  “03_design.md”, if available.
-- After understanding the "02_analysis.md", PRD, "00_jira-tickets.md" and "03_design.md", decompose the work into *
-  *tasks** and
-  the smallest practical subtasks. Think hard.
+- Create a file "04_plan.md", which is referred to as "PLAN" in this file, with all the required phases, tasks and
+  subtasks in order to implement the work described in the PRD and the design in the "03_design.md", if available.
+- After understanding the "02_analysis.md", PRD, and "03_design.md", decompose the work into **tasks** and the smallest
+  practical subtasks. Think hard.
 - Represent every item with an unchecked GitHub-style checkbox (`[ ]`).
 - Subtasks must be clear, atomic, and actionable so that a competent engineer can follow them without extra context.
 - Preserve and integrate every technical detail found in the work description.

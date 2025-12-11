@@ -15,12 +15,10 @@ I'm already hard at work in a commercial, multi-platform multi-repo — and I mu
 - I live in **one self-contained Markdown file**: `gustav.md`
 - I follow a clear, **linear workflow** made up of distinct stages
 - I handle **session management** — resume any session at any time
-- I integrate seamlessly with **JIRA tickets** — from ticket to delivery
 - I handle **minimal or complex input** equally well
 - I create **intermediate files** inside folders I organize — neatly tracked
 - I'm comfortable with **monorepos, multi-repos, or single repos**
 - I respect your existing AI directives — like `CLAUDE.md` — without conflict
-- I manage **git branches** and **ticket status** automatically
 
 ---
 
@@ -36,8 +34,7 @@ myproject/
 ├── web-app/
 └── gustav/        ← that's me
     ├── gustav.md
-    ├── memory/    ← session tracking
-    └── templates/ ← JIRA ticket templates
+    └── memory/    ← session tracking
 ```
 
 **Claude Code**: Run `claude` in the `myproject` folder, mention `gustav/gustav.md`, and let's begin.
@@ -54,17 +51,9 @@ Mention the `gustav.md` file and press enter
 
 ## ⚙️ How to Use Me
 
-I now support multiple ways to start working:
-
-### Option 1: JIRA Ticket Integration
-- Provide JIRA ticket numbers (e.g., MA-3645, MA-3489)
-- I'll fetch ticket details, create git branches, and set up the work environment
-- I'll automatically update ticket status to "In Progress"
-- I'll integrate any Confluence links found in tickets
-
-### Option 2: Manual Working Folder
-- Provide a working folder path
-- I'll set up the session and guide you through the requirements
+### Getting Started
+- Provide a working folder path where I'll organize all session files
+- I'll set up the session and guide you through defining requirements
 
 ### Session Management
 I maintain a complete session history in `gustav/memory/sessions.md`:
@@ -117,18 +106,11 @@ Before any work begins, I handle session management:
 - Present options to resume open sessions or start new ones
 - Track session creation dates, descriptions, and status
 
-**JIRA Integration (if chosen):**
-- Fetch JIRA ticket details using Atlassian MCP
-- Create git branches automatically (`{ticket-code}-description`)
-- Generate `00_jira-tickets.md` using appropriate templates
-- Update JIRA ticket status to "In Progress"
-- Integrate Confluence content when linked in tickets
-
 **Working Folder Setup:**
-- Create structured working folder (e.g., `specs/MA-4567-feature-name`)
+- Create structured working folder at user-specified path
 - Initialize working memory files for session tracking
 
-➡️ **Output:** Session setup, `00_jira-tickets.md` (if JIRA), `x_working-memory.md`
+➡️ **Output:** Session setup, `x_working-memory.md`
 
 ---
 
@@ -138,11 +120,11 @@ I check whether a `01_prd.md` exists.
 
 - If it's missing or lacks the section `WORK TO BE DONE`, I'll ask you structured questions:
   1. *What topic do you want me to do preliminary analysis on?*
-  2. *Do you want a DESIGN section in the PRD?* (skipped for Spike tickets)
+  2. *Do you want a DESIGN section in the PRD?*
   3. *Which apps/repos should I strictly work on?*
   4. *What is the work to be done?*
 
-Each answer updates the PRD accordingly. If JIRA tickets exist, I reference the `00_jira-tickets.md` content.
+Each answer updates the PRD accordingly.
 
 ➡️ **Output:** Updated or newly created `01_prd.md`
 
@@ -175,7 +157,7 @@ I read the `DESIGN` section in the PRD.
 
 #### 4. `PLANNING` – The Implementation Map
 
-I use the PRD, `02_analysis.md`, `03_design.md`, and `00_jira-tickets.md` to create a detailed plan:
+I use the PRD, `02_analysis.md`, and `03_design.md` to create a detailed plan:
 
 - Breaks work into phases, tasks, and atomic subtasks
 - Uses GitHub-style checkboxes (`[ ]`) for tracking
@@ -204,7 +186,6 @@ I execute the plan step-by-step with rigorous tracking:
 | File Name                | Purpose                                                       |
 |-------------------------|---------------------------------------------------------------|
 | `gustav/memory/sessions.md` | Session tracking and management                           |
-| `00_jira-tickets.md`    | JIRA ticket details (when using JIRA integration)            |
 | `01_prd.md`             | The Product Requirements Document                             |
 | `02_analysis.md`        | Technical breakdown of the analysis topic                     |
 | `03_design.md`          | UI structure and layout breakdown                             |
@@ -219,16 +200,14 @@ I execute the plan step-by-step with rigorous tracking:
 At initialization, I'll present options to:
 
 1. **Resume an existing open session** (if any exist)
-2. **Start a new session** with either:
-   - JIRA ticket numbers (e.g., MA-3645, MA-4567)
-   - Manual working folder specification
+2. **Start a new session** by providing a working folder path
 
 During PRD creation, I may ask:
 
-1. **What topic do you want me to do preliminary analysis on?**  
-2. **Do you want a DESIGN section in the PRD?** (skipped for Spike tickets)
-3. **Which apps/repos should I strictly work on?**  
-4. **What is the work to be done?**  
+1. **What topic do you want me to do preliminary analysis on?**
+2. **Do you want a DESIGN section in the PRD?**
+3. **Which apps/repos should I strictly work on?**
+4. **What is the work to be done?**
 
 Your answers shape the PRD and workflow.
 
