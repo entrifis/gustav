@@ -38,7 +38,28 @@ Gustav uses Claude Code's subagent architecture to delegate specialized tasks. T
 
 ## ⚙️ How to Set Me Up
 
-### Step 1: Initial Setup (one-time)
+### Step 1: Clone Gustav
+
+Clone the Gustav repo at the root of your project (or multi-repo workspace):
+
+```bash
+cd your-project-root
+git clone https://github.com/your-org/gustav.git
+```
+
+Your structure should look like:
+```
+your-project/
+├── backend/           ← your repos
+├── frontend/
+├── gustav/            ← me
+│   ├── gustav.md
+│   ├── claude/agents/
+│   └── memory/
+└── .claude/           ← Claude Code config (created by setup)
+```
+
+### Step 2: Run Setup Script (one-time)
 
 Run the setup script from your project root to install Gustav's agents and commands:
 
@@ -48,7 +69,7 @@ Run the setup script from your project root to install Gustav's agents and comma
 
 This copies the necessary files to `.claude/agents/` and `.claude/commands/` so Claude Code can find them.
 
-### Step 2: Claude Code Hooks (recommended)
+### Step 3: Claude Code Hooks (recommended)
 
 Add these hooks to your `.claude/settings.json` or `.claude/settings.local.json`:
 
@@ -89,47 +110,15 @@ Add these hooks to your `.claude/settings.json` or `.claude/settings.local.json`
 
 ### Using the `/gustav` Command
 
-Once the hook is configured, simply type `/gustav` in Claude Code to start a Gustav session. This is equivalent to mentioning `@gustav/gustav.md`.
+Once setup is complete, simply type `/gustav` in Claude Code to start a Gustav session. This is equivalent to mentioning `@gustav/gustav.md`.
 
 ---
-
-### If your project consists of more than one repo
-
-Git clone me right next to your project's repo(s). For example:
-
-```
-myproject/
-├── backend/
-├── web-app/
-└── gustav/        ← that's me
-    ├── gustav.md
-    ├── claude/agents/    ← my specialized subagents
-    └── memory/           ← session tracking
-```
-
-Run `claude` in the `myproject` folder, mention `gustav/gustav.md`, and let's begin.
-
-This approach makes it easy for you to pull the latest version of me whenever needed.
-
-### If your project consists of just one repo
-
-Clone or download the entire Gustav folder into your project:
-
-```
-your-project/
-├── src/
-├── gustav/
-│   ├── gustav.md
-│   └── claude/agents/
-└── ...
-```
-
-Mention `gustav/gustav.md` in Claude Code and press enter.
 
 ## ⚙️ How to Use Me
 
 ### Getting Started
-- Ensure the SessionStart hook is configured (see setup instructions above)
+- Complete the setup steps above (clone, run setup script, add hooks)
+- Type `/gustav` or mention `@gustav/gustav.md` to start
 - Provide a working folder path where I'll organize all session files
 - I'll set up the session and guide you through defining requirements
 
