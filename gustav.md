@@ -172,35 +172,38 @@ Ask these as regular prose questions, one at a time:
 
 - Use the gustav-planner agent to do the following:
 - Read and understand the PRD
-- Read the files “02_analysis.md” and “03_design.md” in the {working_folder}, if present
+- Read the files "02_analysis.md" and "03_design.md" in the {working_folder}, if present
 - Create a file "04_plan.md", which is referred to as "PLAN" in this file, with all the required phases, tasks and
   subtasks in order to implement the work described in the PRD and the design in the "03_design.md", if available.
+- **IMPORTANT**: Add a progress tracking comment at the very top of 04_plan.md:
+  `<!-- PROGRESS: 0/N tasks | Phase: 1 | Current: First task description -->`
+  where N is the total number of tasks (not subtasks)
 - After understanding the "02_analysis.md", PRD, and "03_design.md", decompose the work into **tasks** and the smallest
   practical subtasks. Think hard.
 - Represent every item with an unchecked GitHub-style checkbox (`[ ]`).
 - Subtasks must be clear, atomic, and actionable so that a competent engineer can follow them without extra context.
 - Preserve and integrate every technical detail found in the work description.
-- All phases, tasks, and subtasks should have a “checkbox” which can be ticked in order to track the completed ones
-- The plan should not involve the “PRELIMINARY ANALYSIS” and “DESIGN” sections - if present - since they have already
+- All phases, tasks, and subtasks should have a "checkbox" which can be ticked in order to track the completed ones
+- The plan should not involve the "PRELIMINARY ANALYSIS" and "DESIGN" sections - if present - since they have already
   been taken care of in previous STAGES.
 - Do **NOT** include phases that involve deployment, unless explicitly required in the PRD
-- You know that the STAGE of “PLANNING” has been completed if there is a file “04_plan.md” in the {working_folder}
+- You know that the STAGE of "PLANNING" has been completed if there is a file "04_plan.md" in the {working_folder}
 
 ## STAGE 5. EXECUTION
 
-- Read and understand the PLAN, the PRD, the ANALYSIS and the “03_design.md” (if present).
+- Read and understand the PLAN, the PRD, the ANALYSIS and the "03_design.md" (if present).
 - Check the PLAN to see if some tasks are already done and you need to resume instead of beginning from scratch
 - IMPORTANT: Think hard and execute all the phases, tasks and subtasks in the PLAN until the end, unless explicitly
   asked by the user to do differently. This instruction refers to the execution-04_plan.md file and not the STAGES of
   the whole workflow
-- **IMPORTANT**: Create a file “05_execution-memory.md” in the {working_folder} where you keep track of what you have
+- **IMPORTANT**: Create a file "05_execution-memory.md" in the {working_folder} where you keep track of what you have
   done during the
   execution. This file could help resume the execution if needed.
 - Do not mention the updates you do to the execution memory file, or for your eyes only
-- After completing a task, always mark the task as done in the PLAN. Do not wait to complete the whole Phase to mark the
-  Task as complete.
-- Update the “05_execution-memory.md” file whenever is appropriate because of meaningful work done
-- You know that the STAGE of “EXECUTION” has been completed if all the tasks in the PLAN are marked as completed.
+- After completing a task, always mark the task as done in the PLAN (`[x]`) and update the PROGRESS comment at the top
+  of 04_plan.md with the new completed count and current task. The PostToolUse hook will remind you to do this.
+- Update the "05_execution-memory.md" file whenever is appropriate because of meaningful work done
+- You know that the STAGE of "EXECUTION" has been completed if all the tasks in the PLAN are marked as completed.
 - **IMPORTANT**: When all STAGES are completed, update the {SESSIONS MEMORY} file with the session
   last update date (current date) and move the status of the session to "closed".
 

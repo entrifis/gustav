@@ -48,9 +48,9 @@ Run the setup script from your project root to install Gustav's agents and comma
 
 This copies the necessary files to `.claude/agents/` and `.claude/commands/` so Claude Code can find them.
 
-### Step 2: SessionStart Hook (recommended)
+### Step 2: Claude Code Hooks (recommended)
 
-Add this hook to your `.claude/settings.json` or `.claude/settings.local.json` to keep Gustav's subagents and commands up-to-date automatically:
+Add these hooks to your `.claude/settings.json` or `.claude/settings.local.json`:
 
 ```json
 {
@@ -65,14 +65,27 @@ Add this hook to your `.claude/settings.json` or `.claude/settings.local.json` t
           }
         ]
       }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "prompt",
+            "prompt": "If you are executing a Gustav plan (04_plan.md exists in the working folder), check if the edit you just made completes a task. If so: 1) Mark that task's checkbox as [x] in 04_plan.md, 2) Update the PROGRESS comment at the top of 04_plan.md with the new count and current task."
+          }
+        ]
+      }
     ]
   }
 }
 ```
 
-This ensures the subagents and `/gustav` command stay up-to-date when you pull new versions of Gustav.
+**What these hooks do:**
+- **SessionStart**: Keeps subagents and commands up-to-date when you pull new versions of Gustav
+- **PostToolUse**: Automatically reminds Claude to update task checkboxes and progress after completing work
 
-**Note:** The hook runs after Claude Code loads commands, so the initial `setup.sh` is needed for first-time setup.
+**Note:** The SessionStart hook runs after Claude Code loads commands, so the initial `setup.sh` is needed for first-time setup.
 
 ### Using the `/gustav` Command
 
