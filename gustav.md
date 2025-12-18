@@ -64,11 +64,13 @@
     - the session creation date
     - the session last update date
     - the sessions status (open or closed)
-- Present the user with a list "Available Options", and ask them to choose one of the sessions that have **status set to
-  be "open"** to resume, or if they want to start a new one. IMPORTANT: Show onlly the sessions that have status set to
-  be "open".
-- Your list should be presented as a numbered list, with the "Start a new session" option first.
-- Do *NOT* provide any further explanation apart from the list.
+- Filter to only sessions with **status set to "open"**
+- Use the AskUserQuestion tool to present session options:
+  - First option: "Start new session" (description: "Create a new working session")
+  - Remaining options: Up to 3 most recent open sessions (by last update date)
+    - Label: Session description (truncated if needed)
+    - Description: Working folder path
+  - If more than 3 open sessions exist, add a note in prose after the question listing the other available sessions
 - If the user chooses to resume a session, set the {working_folder} to the one of the session they chose, and continue
   to STAGE 1 (which you need to check if completed and move to the right next stage)
 - If the user chooses to start a new session, ask them to provide a {working_folder} path, then continue to STAGE 0.B
