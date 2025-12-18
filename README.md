@@ -38,9 +38,19 @@ Gustav uses Claude Code's subagent architecture to delegate specialized tasks. T
 
 ## ⚙️ How to Set Me Up
 
-### Required: SessionStart Hook
+### Step 1: Initial Setup (one-time)
 
-Add this hook to your `.claude/settings.json` or `.claude/settings.local.json` to automatically copy Gustav's subagents and commands at session start:
+Run the setup script from your project root to install Gustav's agents and commands:
+
+```bash
+./gustav/setup.sh
+```
+
+This copies the necessary files to `.claude/agents/` and `.claude/commands/` so Claude Code can find them.
+
+### Step 2: SessionStart Hook (recommended)
+
+Add this hook to your `.claude/settings.json` or `.claude/settings.local.json` to keep Gustav's subagents and commands up-to-date automatically:
 
 ```json
 {
@@ -60,7 +70,9 @@ Add this hook to your `.claude/settings.json` or `.claude/settings.local.json` t
 }
 ```
 
-This ensures the subagents and `/gustav` command are always available and up-to-date without manual copying.
+This ensures the subagents and `/gustav` command stay up-to-date when you pull new versions of Gustav.
+
+**Note:** The hook runs after Claude Code loads commands, so the initial `setup.sh` is needed for first-time setup.
 
 ### Using the `/gustav` Command
 
