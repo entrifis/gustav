@@ -93,41 +93,46 @@
   questions in sequence
 - If there is a PRD but the section WORK TO BE DONE is empty or not present, resume with the questions below that
   reflect the present sections of the PRD
-- IMPORTANT: Ask the questions one by one.
+- IMPORTANT: Use the AskUserQuestion tool to ask the initial questions together, then follow up based on answers.
 - You know that the STAGE of “PRD" has been completed if there is a file “01_prd.md” in the {working_folder} and the
   section WORK TO BE DONE has content
 
 ### Questions to ask
 
-- When to ask this question: always, at the beginning of the PRD creation
-- Question: What topic do you want me to do preliminary analysis on?
-- Hint: This analysis will help understanding what needs to be done and planning. Leave empty if you want to add it
-  it manually in the PRD
-- Your action after the answer: if the answer is not empty, add it in the PRD with the heading “PRELIMINARY ANALYSIS”
+#### Initial Questions (use AskUserQuestion tool)
 
-- When to ask this question: always
-- Question: Do you want a DESIGN section in the PRD? If yes, please provide a description of the design and any
-  mockups you have.
-- Hint: This will help the creation of pages and components, if needed
-- Your action after the answer: if the answer is positive, create a section with the heading “DESIGN” in the PRD. The
-  section should have two sub sections, titled “DESCRIPTION” and “MOCKUPS”. If the answer of the user is not just a
-  “yes” but also includes the content of the section, add it in the PRD too.
+Use the AskUserQuestion tool to ask the following questions together:
 
+1. **Analysis** - "Do you want preliminary analysis on a specific topic before planning?"
+   - Options: "Yes" (I'll specify a topic to analyze first), "No" (Skip preliminary analysis)
 
-- When to ask this question: if the **{repos}** has not already been provided in previous steps, If it has been
-  provided, skip this question and use the **{repos}** as the answer for this action
-- Question: Which apps/repos should I strictly work on
-- Hint: This will help to define the scope of the work and restrict me to the right repositories. leave empty if
-  you want me to decide
-- Your action after the answer: if the answer is not empty, add the answer in a section in the PRD with the heading
-  “SCOPE”
+2. **Design** - "Do you want a DESIGN section with mockup analysis?"
+   - Options: "Yes, with mockups" (Include design section with mockup file analysis), "Yes, description only" (Include design section without mockups), "No" (Skip design section)
 
-- When to ask this question: always, if the WORK TO BE DONE section is empty or not present
+3. **Scope** - "Should I restrict work to specific repositories?" (skip if {repos} was already provided)
+   - Options: "All repos" (Let Gustav decide which repos to work on), "Specific repos" (I'll specify which repos to use)
+
+#### Follow-up Questions (based on answers above)
+
+Ask these as regular prose questions, one at a time:
+
+- If Analysis = "Yes": Ask "What topic do you want me to analyze?"
+  → Add answer to PRD under heading "PRELIMINARY ANALYSIS"
+
+- If Design = "Yes, with mockups": Ask "Please provide the design description and mockup file paths"
+  → Create "DESIGN" section with "DESCRIPTION" and "MOCKUPS" subsections
+
+- If Design = "Yes, description only": Ask "Please provide the design description"
+  → Create "DESIGN" section with "DESCRIPTION" subsection only
+
+- If Scope = "Specific repos": Ask "Which repositories should I work on?"
+  → Add answer to PRD under heading "SCOPE"
+
+#### Final Question (always ask)
+
 - Question: What is the work to be done?
-- Hint: Describe the requirements in detail. You can copy paste any size of product requirements you wish.
-- Your action after the answer:
-    - if not already present in the PRD, create a section with the header WORK TO BE DONE
-    - In this section, add the answer of the user *EXACTLY* as provided.
+- Hint: Describe the requirements in detail. You can copy paste any size of product requirements.
+- Action: Create section "WORK TO BE DONE" with the answer exactly as provided.
 
 ## STAGE 2. ANALYSIS
 
