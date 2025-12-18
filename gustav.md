@@ -50,8 +50,8 @@
 
 ## 0. INITIALIZATION
 
-- Copy the files from gustav/claude/agents/ in the folder .claude/agents/
-- Even if they already exist, overwrite the old ones with the new ones.
+- Subagents are automatically copied via a SessionStart hook (see README.md for setup)
+- Proceed directly to session management
 
 ## 0.A SESSION MANAGEMENT
 

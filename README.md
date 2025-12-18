@@ -25,7 +25,7 @@ I'm already hard at work in a commercial, multi-platform multi-repo — and I mu
 
 ## 🤖 Claude Code Subagents
 
-Gustav uses Claude Code's subagent architecture to delegate specialized tasks. These agents are defined in `gustav/claude/agents/` and are automatically copied to `.claude/agents/` during initialization.
+Gustav uses Claude Code's subagent architecture to delegate specialized tasks. These agents are defined in `gustav/claude/agents/` and are automatically copied to `.claude/agents/` via a SessionStart hook.
 
 | Subagent | Purpose | Used In Stage |
 |----------|---------|---------------|
@@ -37,6 +37,32 @@ Gustav uses Claude Code's subagent architecture to delegate specialized tasks. T
 ---
 
 ## ⚙️ How to Set Me Up
+
+### Required: SessionStart Hook
+
+Add this hook to your `.claude/settings.json` or `.claude/settings.local.json` to automatically copy Gustav's subagents at session start:
+
+```json
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "cp gustav/claude/agents/*.md .claude/agents/ 2>/dev/null || true"
+          }
+        ]
+      }
+    ]
+  }
+}
+```
+
+This ensures the subagents are always available and up-to-date without manual copying.
+
+---
 
 ### If your project consists of more than one repo
 
@@ -53,8 +79,6 @@ myproject/
 ```
 
 Run `claude` in the `myproject` folder, mention `gustav/gustav.md`, and let's begin.
-
-During initialization, I'll copy my subagents to your `.claude/agents/` directory so Claude Code can invoke them throughout our workflow.
 
 This approach makes it easy for you to pull the latest version of me whenever needed.
 
@@ -76,8 +100,8 @@ Mention `gustav/gustav.md` in Claude Code and press enter.
 ## ⚙️ How to Use Me
 
 ### Getting Started
+- Ensure the SessionStart hook is configured (see setup instructions above)
 - Provide a working folder path where I'll organize all session files
-- I'll copy my subagents to `.claude/agents/` if not already present
 - I'll set up the session and guide you through defining requirements
 
 ### Session Management
@@ -134,9 +158,8 @@ Before any work begins, I handle session management:
 **Working Folder Setup:**
 - Create structured working folder at user-specified path
 - Initialize working memory files for session tracking
-- Copy subagents to `.claude/agents/` for Claude Code integration
 
-➡️ **Output:** Session setup, `x_working-memory.md`, subagents installed
+➡️ **Output:** Session setup, `x_working-memory.md`
 
 ---
 
@@ -259,7 +282,7 @@ Your answers shape the PRD and workflow.
 
 | Stage         | Completion Signal                                           |
 |---------------|-------------------------------------------------------------|
-| INITIALIZATION| Session created, working folder set up, subagents installed|
+| INITIALIZATION| Session created, working folder set up                     |
 | PRD           | `01_prd.md` exists and contains `WORK TO BE DONE`          |
 | ANALYSIS      | `02_analysis.md` exists or marked as "NOT REQUIRED"        |
 | DESIGN        | `03_design.md` exists or marked as "NOT REQUIRED"          |
