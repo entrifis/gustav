@@ -93,7 +93,7 @@ Add these hooks to your `.claude/settings.json` or `.claude/settings.local.json`
         "hooks": [
           {
             "type": "prompt",
-            "prompt": "If you are executing a Gustav plan (04_plan.md exists in the working folder), check if the edit you just made completes a task. If so: 1) Mark that task's checkbox as [x] in 04_plan.md, 2) Update the PROGRESS comment at the top of 04_plan.md with the new count and current task."
+            "prompt": "ONLY if ALL these conditions are met: (1) you are currently executing a Gustav plan, (2) a 04_plan.md file exists in the working folder, AND (3) the edit you just made completes a task in that plan - THEN mark the task's checkbox as [x] and update the PROGRESS comment. Otherwise, do nothing and continue normally. Never block or stop execution."
           }
         ]
       }
