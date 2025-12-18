@@ -43,8 +43,10 @@
   {working_folder}. This file will be referred to as WORKING MEMORY in this file.
 - Keep track of the STAGES you worked on with very compact summary of what you do in the WORKING MEMORY
 - Do not mention anything about the WORKING MEMORY to the user, it’s for your eyes only
-- IMPORTANT: Always confirm with the user before proceeding to the next STAGE. This instruction refers to the STAGES of
-  the whole workflow, and not to the phases of the PLAN as described later in this file
+- IMPORTANT: Always confirm with the user before proceeding to the next STAGE using the AskUserQuestion tool:
+  - Question: "Ready to proceed to [NEXT STAGE NAME]?"
+  - Options: "Yes, proceed" (Continue to the next stage) / "No, wait" (Stay on current stage)
+  - This instruction refers to the STAGES of the whole workflow, and not to the phases of the PLAN
 
 # STAGES DEFINITIONS
 
