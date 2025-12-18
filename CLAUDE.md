@@ -12,7 +12,9 @@ Gustav is an AI-powered project management agent that orchestrates software deli
 gustav/
 ├── gustav.md              # Main agent instructions and workflow definition
 ├── memory/sessions.md     # Session tracking (active/closed sessions)
-├── claude/agents/         # Subagent definitions for specialized tasks
+├── claude/
+│   ├── agents/            # Subagent definitions for specialized tasks
+│   └── commands/          # Slash commands (e.g., /gustav)
 └── mcp/useful-mcps.md     # MCP server installation guides
 ```
 

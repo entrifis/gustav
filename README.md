@@ -40,7 +40,7 @@ Gustav uses Claude Code's subagent architecture to delegate specialized tasks. T
 
 ### Required: SessionStart Hook
 
-Add this hook to your `.claude/settings.json` or `.claude/settings.local.json` to automatically copy Gustav's subagents at session start:
+Add this hook to your `.claude/settings.json` or `.claude/settings.local.json` to automatically copy Gustav's subagents and commands at session start:
 
 ```json
 {
@@ -51,7 +51,7 @@ Add this hook to your `.claude/settings.json` or `.claude/settings.local.json` t
         "hooks": [
           {
             "type": "command",
-            "command": "cp gustav/claude/agents/*.md .claude/agents/ 2>/dev/null || true"
+            "command": "mkdir -p .claude/agents .claude/commands && cp gustav/claude/agents/*.md .claude/agents/ 2>/dev/null || true && cp gustav/claude/commands/*.md .claude/commands/ 2>/dev/null || true"
           }
         ]
       }
@@ -60,7 +60,11 @@ Add this hook to your `.claude/settings.json` or `.claude/settings.local.json` t
 }
 ```
 
-This ensures the subagents are always available and up-to-date without manual copying.
+This ensures the subagents and `/gustav` command are always available and up-to-date without manual copying.
+
+### Using the `/gustav` Command
+
+Once the hook is configured, simply type `/gustav` in Claude Code to start a Gustav session. This is equivalent to mentioning `@gustav/gustav.md`.
 
 ---
 
