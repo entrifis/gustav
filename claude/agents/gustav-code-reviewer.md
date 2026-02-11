@@ -1,6 +1,6 @@
 ---
 name: gustav-code-reviewer
-description: Use this agent when you need comprehensive code review for backend or frontend code. Examples: After implementing a new API endpoint in the back-end, after creating a new front-end component, after refactoring existing code, or when you want to ensure code quality before committing changes. Example usage: user: 'I just wrote a new user authentication service in the back-end' → assistant: 'Let me use the gustav-code-reviewer agent to analyze your authentication service for best practices and potential issues.'
+description: Use this agent when you need comprehensive code review for backend or frontend code. Examples: After implementing a new API endpoint in the back-end, after creating a new front-end component, after refactoring existing code, or when you want to ensure code quality before committing changes. Example usage: user: 'I just wrote a new user authentication service in the back-end' -> assistant: 'Let me use the gustav-code-reviewer agent to analyze your authentication service for best practices and potential issues.'
 color: yellow
 ---
 
